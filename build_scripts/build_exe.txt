@@ -1,0 +1,44 @@
+===========================================================
+Visual FSM Designer - 打包构建说明 (Windows 10/11)
+===========================================================
+
+本文件记录了如何将 .py 源码封装为开箱即用的 .exe 程序的步骤。
+
+1. 准备工作 (Prerequisites)
+-----------------------------------------------------------
+- 确保已安装 PyInstaller: 
+  pip install pyinstaller
+
+- 确保 Graphviz 运行时已就绪:
+  在脚本同级目录下创建 'graphviz_runtime' 文件夹，并从系统的 Graphviz/bin 
+  目录拷贝所有文件（.exe 和 .dll）进去。
+
+2. 打包命令 (Build Commands)
+-----------------------------------------------------------
+推荐使用 [方案 A: 单文件夹模式]，这在处理外部二进制依赖（如 Graphviz）时最稳定。
+
+方案 A: 单文件夹打包 (推荐，生成在 dist/FSM_Designer 目录下)
+pyinstaller --noconsole --onedir --add-data "graphviz_runtime;graphviz_runtime" --name "FSM_Designer_V1.0.0" FSM_Designer_v1.0.0.py
+
+方案 B: 单文件打包 (生成单一的巨大 EXE)
+pyinstaller --noconsole --onefile --add-data "graphviz_runtime;graphviz_runtime" --name "FSM_Designer_V1.0.0" FSM_Designer_v1.0.0.py
+
+参数说明:
+--noconsole : 运行时不显示黑色控制台窗口。
+--onedir    : 生成一个包含所有依赖项的文件夹（启动速度快）。
+--onefile   : 将所有内容压缩进一个 EXE（启动稍慢，某些杀毒软件易误报）。
+--add-data  : 格式为 "源路径;目标路径"。注意 Windows 下使用分号 ";"。
+
+3. 封装说明 (Packaging)
+-----------------------------------------------------------
+打包完成后：
+1. 进入 dist/ 目录。
+2. 将生成的文件夹（方案 A）或 EXE（方案 B）连同任何必要的例程文件压缩为 .zip。
+3. 上传至 GitHub Releases。
+
+4. 常见问题 (Troubleshooting)
+-----------------------------------------------------------
+- 如果运行时提示找不到 'dot': 检查代码顶部的路径重定向逻辑，确保 os.environ["PATH"] 
+  已正确包含 graphviz_runtime 目录。
+- 报毒问题: 如果 Windows Defender 拦截，请尝试在打包时移除 --onefile 参数，使用 
+  --onedir 模式通常会减少误报。

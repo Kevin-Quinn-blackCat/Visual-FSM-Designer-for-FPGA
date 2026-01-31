@@ -1,0 +1,54 @@
+{
+    "reset": "S_IDLE",
+    "enc": "Binary",
+    "fsm": [
+        [
+            "S_IDLE",
+            "S_ONE",
+            "pi_data == DIN_ONE",
+            "po_match=0"
+        ],
+        [
+            "S_IDLE",
+            "S_IDLE",
+            "pi_data == DIN_ZERO",
+            "po_match=0"
+        ],
+        [
+            "S_ONE",
+            "S_TEN",
+            "pi_data == DIN_ZERO",
+            "po_match=0"
+        ],
+        [
+            "S_ONE",
+            "S_ONE",
+            "pi_data == DIN_ONE",
+            "po_match=0"
+        ],
+        [
+            "S_TEN",
+            "S_IDLE",
+            "pi_data == DIN_ONE",
+            "po_match=1"
+        ],
+        [
+            "S_TEN",
+            "S_IDLE",
+            "pi_data == DIN_ZERO",
+            "po_match=0"
+        ]
+    ],
+    "params": [
+        [
+            "DIN_ZERO",
+            "1'b0",
+            "Input 0"
+        ],
+        [
+            "DIN_ONE",
+            "1'b1",
+            "Input 1"
+        ]
+    ]
+}
