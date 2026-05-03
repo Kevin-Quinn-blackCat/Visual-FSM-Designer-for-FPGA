@@ -4,7 +4,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20MacOS-lightgrey.svg)]()
-[![AI-Powered](https://img.shields.io/badge/AI--Collaboration-Gemini--3--Flash-blueviolet.svg)]()
 
 > **"让状态机设计回归逻辑本质，而非繁琐的连线绘图。"**
 
@@ -128,7 +127,6 @@ python fsm1_0_0.py
 ## 💎 致谢
 
 - 感谢 [Graphviz](https://graphviz.org/) 团队提供的卓越布局引擎。
-- 本项目由 **Gemini AI** 协作完成，探索了 AI 与硬件设计辅助工具结合的新范式。
 
 ---
 *如果你觉得这个工具有所帮助，请给仓库一个 ⭐ Star！*
